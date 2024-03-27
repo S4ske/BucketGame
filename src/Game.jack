@@ -26,8 +26,9 @@ class Game {
             let ticks = 0;
             do drops.append(Drop.new(random.randRange(480)));
         }
-        var c = 0;
-        while ~(c = drops.Last)
+        var int c;
+        let c = 0;
+        while (c < drops.Last)
         {
             var Drop drop = Drops.get(c);
             if (drop.getPosition().getY() > 250) {
@@ -48,10 +49,32 @@ class Game {
                     do drop.update();
                 }
             }
+            let c = c + 1;
         }
         let ticks = ticks + 1;
     }
 
+    method Bucket getBucket() {
+        return bucket;
+    }
+
+    method List getDrops() {
+        return drops;
+    }
+
+    method ScoreBoard getScoreBoard() {
+        return scoreBoard;
+    }
+
+    method void moveBucketLeft() {
+        do bucket.moveLeft();
+        return;
+    }
+
+    method void moveBucketRight() {
+        do bucket.moveRight();
+        return;
+    }
 
     method void dispose()
     {

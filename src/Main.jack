@@ -1,5 +1,47 @@
 class Main {
     function void main() {
-        // TODO
+        var Game game;
+        let game = Game.new();
+        var sting loseMessage;
+        let loseMessage = "YOU ARE NOOBIC!!!";
+
+        do game.getBucket.draw();
+        do game.getScoreBoard.draw();
+        while(~((Keyboard.keyPressed() = 41) | (Keyboard.keyPressed() = 44))){ }
+        var bool exit;
+        let exit = false;
+        while (~exit) {
+            if (Keyboard.keyPressed() = 41) {
+                do game.moveBucketLeft();
+            }
+            if (Keyboard.keyPressed() = 44) {
+                do game.moveBucketRight();
+            }
+            if (Keyboard.keyPressed() = 51) {
+                let exit = true;
+            }
+            do game.getScoreBoard().clear();
+            var int i;
+            let i = 0;
+            var List drops;
+            let drops = game.getDrops();
+            while (i < drops.getCount()) {
+                do drops.get(i).clear();
+            }
+            do drops.dispose();
+            do game.tick();
+            do game.getScoreBoard().draw();
+            let i = 0;
+            let drops = game.getDrops();
+            while (i < drops.getCount()) {
+                do drops.get(i).draw();
+            }
+            do drops.dispose();
+            if (game.getScoreBoard().getHp() < 1) {
+                do Output.moveCursor(222, 120);
+                do Output.printString(loseMessage);
+                let exit = true;
+            }
+        }
     }
 }
