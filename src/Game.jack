@@ -8,8 +8,8 @@ class Game {
     constructor Game new()
     {
         var Point bucketPosition;
-        let bucketPosition = Point.new(222, 210);
         var Point scorePosition;
+        let bucketPosition = Point.new(222, 210);
         let scorePosition = Point.new(222, 10);
         let bucket = Bucket.new(bucketPosition);
         let drops = List.new();
@@ -22,33 +22,38 @@ class Game {
 
     method void tick()
     {
+        var int newX;
+        var Drop newDrop;
+        var int c;
+        var Drop drop;
+        var int dropX, dropY, bucketX, bucketY;
+        var Point dropPosition;
+        var Point bucketPosition;
         do Sys.wait(25);
-        if (ticks = 100)
-        {
+        if (ticks = 100) {
             let ticks = 0;
-            var int newX;
-            var Drop newDrop;
             let newX = random.randRange(480);
             let newDrop = Drop.new(newX);
             do drops.append(newDrop);
         }
-        var int c;
         let c = 0;
-        while (c < drops.Last)
-        {
-            var Drop drop = Drops.get(c);
-            if (drop.getPosition().getY() > 250) {
-                do drop.setPosition(random.randRange(480));
+        while (c < drops.Last()) {
+            let drop = drops.get(c);
+            let dropPosition = drop.getPosition();
+            if (dropPosition.getY() > 250) {
+                let newX = random.randRange(480);
+                do drop.setPosition(newX);
                 do scoreBoard.decHp();
             }
             else {
-                var int dropX, dropY, bucketX, bucketY;
-                let dropX = drop.getPosition().getX();
-                let dropY = drop.getPosition().getY();
-                let bucketX = bucket.getPosition().getX();
-                let bucketY = bucket.getPosition().getY();
+                let bucketPosition = bucket.getPosition();
+                let dropX = dropPosition.getX();
+                let dropY = dropPosition.getY();
+                let bucketX = bucketPosition.getX();
+                let bucketY = bucketPosition.getY();
                 if ((dropX > bucketX) & ((dropX + 30) < (bucketX + 60)) & (dropY < bucketY) & ((dropY + 30) > bucketY)) {
-                    do drop.setPosition(random.randRange(480));
+                    let newX = random.randRange(480);
+                    do drop.setPosition(newX);
                     do scoreBoard.incScore();
                 }
                 else {
@@ -58,6 +63,7 @@ class Game {
             let c = c + 1;
         }
         let ticks = ticks + 1;
+        return;
     }
 
     method Bucket getBucket() {

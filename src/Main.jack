@@ -1,47 +1,58 @@
 class Main {
     function void main() {
         var Game game;
-        let game = Game.new();
         var string loseMessage;
+        var bool exit;
+        var int i;
+        var List drops;
+        var Drop drop;
+        var Bucket bucket;
+        var ScoreBoard scoreBoard;
+        let game = Game.new();
         let loseMessage = "YOU ARE NOOBIC!!!";
 
-        do game.getBucket.draw();
-        do game.getScoreBoard.draw();
-        while(~((Keyboard.keyPressed() = 41) | (Keyboard.keyPressed() = 44))){ }
-        var bool exit;
+        let bucket = game.getBucket();
+        let scoreBoard = game.getScoreBoard();
+        do bucket.draw();
+        do scoreBoard.draw();
+        while(~((Keyboard.keyPressed() = 65) | (Keyboard.keyPressed() = 68) | (Keyboard.keyPressed() = 81))){ }
         let exit = false;
         while (~exit) {
-            if (Keyboard.keyPressed() = 41) {
+            if (Keyboard.keyPressed() = 65) {
                 do game.moveBucketLeft();
             }
-            if (Keyboard.keyPressed() = 44) {
+            if (Keyboard.keyPressed() = 68) {
                 do game.moveBucketRight();
             }
-            if (Keyboard.keyPressed() = 51) {
+            if (Keyboard.keyPressed() = 81) {
                 let exit = true;
             }
-            do game.getScoreBoard().clear();
-            var int i;
+            let scoreBoard = game.getScoreBoard();
+            do scoreBoard.clear();
             let i = 0;
-            var List drops;
             let drops = game.getDrops();
             while (i < drops.getCount()) {
-                do drops.get(i).clear();
+                let drop = drops.get(i);
+                do drop.clear();
             }
             do drops.dispose();
             do game.tick();
-            do game.getScoreBoard().draw();
+            let scoreBoard = game.getScoreBoard();
+            do scoreBoard.draw();
             let i = 0;
             let drops = game.getDrops();
             while (i < drops.getCount()) {
-                do drops.get(i).draw();
+                let drop = drops.get(i);
+                do drop.draw();
             }
             do drops.dispose();
-            if (game.getScoreBoard().getHp() < 1) {
+            let scoreBoard = game.getScoreBoard();
+            if (scoreBoard.getHp() < 1) {
                 do Output.moveCursor(222, 120);
                 do Output.printString(loseMessage);
                 let exit = true;
             }
         }
+        return;
     }
 }

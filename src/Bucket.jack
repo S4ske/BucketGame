@@ -19,8 +19,8 @@ class Bucket {
     }
 
     method void moveLeft() {
-        do clear();
         var int x;
+        do clear();
         let x = position.getX();
         if (x > 0) {
             if (x > 10) {
@@ -39,8 +39,9 @@ class Bucket {
     }
 
     method void moveRight() {
+        var int x;
         do clear();
-        var int x = position.getX();
+        let x = position.getX();
         if (x < 451) {
             if (x < 441) {
                 do position.setX(x + 10);
