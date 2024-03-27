@@ -1,0 +1,194 @@
+function Main.main 8
+call Game.new 0
+pop local 0
+push constant 17
+call String.new 1
+push constant 89
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 85
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 65
+call String.appendChar 2
+push constant 82
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 78
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 66
+call String.appendChar 2
+push constant 73
+call String.appendChar 2
+push constant 67
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+push constant 33
+call String.appendChar 2
+pop local 1
+push local 0
+call Game.getBucket 1
+pop local 6
+push local 0
+call Game.getScoreBoard 1
+pop local 7
+push local 6
+call Bucket.draw 1
+pop temp 0
+push local 7
+call ScoreBoard.draw 1
+pop temp 0
+label WHILE_EXP0
+call Keyboard.keyPressed 0
+push constant 65
+eq
+call Keyboard.keyPressed 0
+push constant 68
+eq
+or
+call Keyboard.keyPressed 0
+push constant 81
+eq
+or
+not
+not
+if-goto WHILE_END0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop local 2
+label WHILE_EXP1
+push local 2
+not
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+push constant 65
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+call Game.moveBucketLeft 1
+pop temp 0
+label IF_FALSE0
+call Keyboard.keyPressed 0
+push constant 68
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+call Game.moveBucketRight 1
+pop temp 0
+label IF_FALSE1
+call Keyboard.keyPressed 0
+push constant 81
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+not
+pop local 2
+label IF_FALSE2
+push local 0
+call Game.getScoreBoard 1
+pop local 7
+push local 7
+call ScoreBoard.clear 1
+pop temp 0
+push constant 0
+pop local 3
+push local 0
+call Game.getDrops 1
+pop local 4
+label WHILE_EXP2
+push local 3
+push local 4
+call List.getCount 1
+lt
+not
+if-goto WHILE_END2
+push local 4
+push local 3
+call List.get 2
+pop local 5
+push local 5
+call Drop.clear 1
+pop temp 0
+goto WHILE_EXP2
+label WHILE_END2
+push local 4
+call List.dispose 1
+pop temp 0
+push local 0
+call Game.tick 1
+pop temp 0
+push local 0
+call Game.getScoreBoard 1
+pop local 7
+push local 7
+call ScoreBoard.draw 1
+pop temp 0
+push constant 0
+pop local 3
+push local 0
+call Game.getDrops 1
+pop local 4
+label WHILE_EXP3
+push local 3
+push local 4
+call List.getCount 1
+lt
+not
+if-goto WHILE_END3
+push local 4
+push local 3
+call List.get 2
+pop local 5
+push local 5
+call Drop.draw 1
+pop temp 0
+goto WHILE_EXP3
+label WHILE_END3
+push local 4
+call List.dispose 1
+pop temp 0
+push local 0
+call Game.getScoreBoard 1
+pop local 7
+push local 7
+call ScoreBoard.getHp 1
+push constant 1
+lt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 222
+push constant 120
+call Output.moveCursor 2
+pop temp 0
+push local 1
+call Output.printString 1
+pop temp 0
+push constant 0
+not
+pop local 2
+label IF_FALSE3
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+return

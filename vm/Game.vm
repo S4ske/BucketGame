@@ -1,0 +1,211 @@
+function Game.new 2
+push constant 5
+call Memory.alloc 1
+pop pointer 0
+push constant 222
+push constant 210
+call Point.new 2
+pop local 0
+push constant 222
+push constant 10
+call Point.new 2
+pop local 1
+push local 0
+call Bucket.new 1
+pop this 0
+call List.new 0
+pop this 1
+push local 1
+call ScoreBoard.new 1
+pop this 2
+push constant 200
+call Random.new 1
+pop this 4
+push constant 100
+pop this 3
+push pointer 0
+return
+function Game.tick 10
+push argument 0
+pop pointer 0
+push constant 25
+call Sys.wait 1
+pop temp 0
+push this 3
+push constant 100
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop this 3
+push this 4
+push constant 480
+call Random.randRange 2
+pop local 0
+push local 0
+call Drop.new 1
+pop local 1
+push this 1
+push local 1
+call List.append 2
+pop temp 0
+label IF_FALSE0
+push constant 0
+pop local 2
+label WHILE_EXP0
+push local 2
+push this 1
+call List.Last 1
+lt
+not
+if-goto WHILE_END0
+push this 1
+push local 2
+call List.get 2
+pop local 3
+push local 3
+call Drop.getPosition 1
+pop local 8
+push local 8
+call Point.getY 1
+push constant 250
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 4
+push constant 480
+call Random.randRange 2
+pop local 0
+push local 3
+push local 0
+call Drop.setPosition 2
+pop temp 0
+push this 2
+call ScoreBoard.decHp 1
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 0
+call Bucket.getPosition 1
+pop local 9
+push local 8
+call Point.getX 1
+pop local 4
+push local 8
+call Point.getY 1
+pop local 5
+push local 9
+call Point.getX 1
+pop local 6
+push local 9
+call Point.getY 1
+pop local 7
+push local 4
+push local 6
+gt
+push local 4
+push constant 30
+add
+push local 6
+push constant 60
+add
+lt
+and
+push local 5
+push local 7
+lt
+and
+push local 5
+push constant 30
+add
+push local 7
+gt
+and
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 4
+push constant 480
+call Random.randRange 2
+pop local 0
+push local 3
+push local 0
+call Drop.setPosition 2
+pop temp 0
+push this 2
+call ScoreBoard.incScore 1
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push local 3
+call Drop.update 1
+pop temp 0
+label IF_END2
+label IF_END1
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+push this 3
+push constant 1
+add
+pop this 3
+push constant 0
+return
+function Game.getBucket 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Game.getDrops 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Game.getScoreBoard 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Game.moveBucketLeft 0
+push argument 0
+pop pointer 0
+push this 0
+call Bucket.moveLeft 1
+pop temp 0
+push constant 0
+return
+function Game.moveBucketRight 0
+push argument 0
+pop pointer 0
+push this 0
+call Bucket.moveRight 1
+pop temp 0
+push constant 0
+return
+function Game.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Bucket.dispose 1
+pop temp 0
+push this 1
+call List.dispose 1
+pop temp 0
+push this 2
+call ScoreBoard.dispose 1
+pop temp 0
+push this 3
+call int.dispose 1
+pop temp 0
+push this 4
+call Random.dispose 1
+pop temp 0
+call Memory.deAlloc 0
+pop temp 0
+push constant 0
+return
