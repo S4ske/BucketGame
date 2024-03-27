@@ -1,4 +1,54 @@
 class Bucket {
-    field int X;
-    // TODO
+    field Point position;
+
+    constructor Bucket new(Point point) {
+        let position = point;
+        return this;
+    }
+
+    method void draw() {
+        do Screen.setColor(true);
+        do Output.drawRectangle(position.getX(), position.getY(), position.getX() + 60, position.getY() + 40)
+        return;
+    }
+
+    method void clear() {
+        do Screen.setColor(false);
+        do Output.drawRectangle(position.getX(), position.getY(), position.getX() + 60, position.getY() + 40)
+        return;
+    }
+
+    method void moveLeft() {
+        do clear();
+        var int x = position.getX();
+        if (x > 0) {
+            if (x > 10) {
+                do position.setX(x - 10);
+            }
+            else {
+                do position.setX(0);
+            }
+        }
+        do draw();
+    }
+
+    method void moveRight() {
+        do clear();
+        var int x = position.getX();
+        if (x < 451) {
+            if (x < 441) {
+                do position.setX(x + 10);
+            }
+            else {
+                do position.setX(451);
+            }
+        }
+        do draw();
+    }
+
+    method void dispose() {
+        do position.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
 }
