@@ -1,17 +1,10 @@
 class Drop
 {
-    field Random random;
-    field Point location;
-    field int size;
+    field Point position;
 
-    constructor Drop new(int s)
+    constructor Drop new(int x)
     {
-        let seed = 480;
-        let random = Random.new(seed);
-        let location = Point.new(size, size) 
-        
-        do dropUpdate();    
-
+        let position = Point.new(x, 0) 
         return this;
     }
 
@@ -19,12 +12,16 @@ class Drop
     method void update()
     {
         do clear();
-        var y;
+        var int y;
         
         let y = position.getY();
         if (y < 210)
-            let y = y - 5;
+        {
+            do position.setY(y + 5);
+        }
 
+
+        do draw();
         return;
     }
 
@@ -36,25 +33,27 @@ class Drop
         let y = position.getY();
 
         do Screen.setColor(true);
-        do Screen.drawRectangle(x, y, 30, 30);
+        do Output.drawRectangle(x, y, x + 30, y + 30);
         
         return;
     }
 
     method void clear()
     {
-        do Screen.setColor(false);
-        do draw();
-        do Screen.setColor(true);
+        var int x, y;
 
+        let x = position.getX();
+        let y = position.getY();
+
+        do Screen.setColor(false);
+        do Output.drawRectangle(x, y, x + 30, y + 30);
+        
         return;
     }
 
     method void dispose()
     {
-        do random.dispose();
-        do location.dispose();
-        do size.dispose();
+        do position.dispose();
         do Memory.deAlloc(this);
 
         return;

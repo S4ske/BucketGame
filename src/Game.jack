@@ -1,3 +1,47 @@
 class Game {
-    // TODO
+    field Bucket bucket;
+    field List drops;
+    field ScoreBoard scoreBoard;
+    field int ticks;
+    field Random random;
+
+    constructor Game new()
+    {
+        var Point bucketPosition = Point.new(222, 210);
+        var Point scorePosition = Point.new(222, 10);
+        let bucket = Bucket.new(bucketPosition);
+        let drops = List.new();
+        let scoreBoard = ScoreBoard.new(scorePosition); 
+        let random = Random.new(200);
+        let ticks = 100;
+
+        return this;
+    }
+
+    method void tick()
+    {
+        if (ticks == 100)
+        {
+            do drops.append(Drop.new(random.randRange(480)));
+        }
+        var c = 0;
+        while(c != drops.Last)
+        {
+            var x = Drops.get()
+            do drops.update();
+            
+        }
+    }
+
+
+    method void dispose()
+    {
+        do bucket.dispose();
+        do drops.dispose();
+        do scoreBoard.dispose();
+        do ticks.dispose();
+        do Memory.deAlloc();
+
+        return;
+    }
 }
