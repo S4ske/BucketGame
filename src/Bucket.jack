@@ -32,6 +32,10 @@ class Bucket {
         do draw();
     }
 
+    method Point getPosition() {
+        return position;
+    }
+
     method void moveRight() {
         do clear();
         var int x = position.getX();

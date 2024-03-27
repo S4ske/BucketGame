@@ -11,17 +11,24 @@ class Drop
 
     method void update()
     {
-        do clear();
         var int y;
         
         let y = position.getY();
-        if (y < 210)
+        if (y < 251)
         {
             do position.setY(y + 5);
         }
 
 
-        do draw();
+        return;
+    }
+
+    method Point getPosition() {
+        return position;
+    }
+
+    method void setPosition(int x) {
+        do position.setX(x);
         return;
     }
 

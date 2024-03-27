@@ -20,17 +20,36 @@ class Game {
 
     method void tick()
     {
-        if (ticks == 100)
+        do Sys.wait(25);
+        if (ticks = 100)
         {
+            let ticks = 0;
             do drops.append(Drop.new(random.randRange(480)));
         }
         var c = 0;
-        while(c != drops.Last)
+        while ~(c = drops.Last)
         {
-            var x = Drops.get()
-            do drops.update();
-            
+            var Drop drop = Drops.get(c);
+            if (drop.getPosition().getY() > 250) {
+                do drop.setPosition(random.randRange(480));
+                do scoreBoard.decHp();
+            }
+            else {
+                var int dropX, dropY, bucketX, bucketY;
+                let dropX = drop.getPosition().getX();
+                let dropY = drop.getPosition().getY();
+                let bucketX = bucket.getPosition().getX();
+                let bucketY = bucket.getPosition().getY();
+                if ((dropX > bucketX) & ((dropX + 30) < (bucketX + 60)) & (dropY < bucketY) & ((dropY + 30) > bucketY)) {
+                    do drop.setPosition(random.randRange(480));
+                    do scoreBoard.incScore();
+                }
+                else {
+                    do drop.update();
+                }
+            }
         }
+        let ticks = ticks + 1;
     }
 
 
@@ -40,6 +59,7 @@ class Game {
         do drops.dispose();
         do scoreBoard.dispose();
         do ticks.dispose();
+        do random.dispose();
         do Memory.deAlloc();
 
         return;
