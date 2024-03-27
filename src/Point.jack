@@ -9,12 +9,12 @@ class Point {
         return this;
     }
 
-    method int setX(int x) {
+    method void setX(int x) {
         let X = x;
         return;
     }
 
-    method int setY(int y) {
+    method void setY(int y) {
         let Y = y;
         return;
     }

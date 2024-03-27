@@ -7,8 +7,10 @@ class Game {
 
     constructor Game new()
     {
-        var Point bucketPosition = Point.new(222, 210);
-        var Point scorePosition = Point.new(222, 10);
+        var Point bucketPosition;
+        let bucketPosition = Point.new(222, 210);
+        var Point scorePosition;
+        let scorePosition = Point.new(222, 10);
         let bucket = Bucket.new(bucketPosition);
         let drops = List.new();
         let scoreBoard = ScoreBoard.new(scorePosition); 
@@ -24,7 +26,11 @@ class Game {
         if (ticks = 100)
         {
             let ticks = 0;
-            do drops.append(Drop.new(random.randRange(480)));
+            var int newX;
+            var Drop newDrop;
+            let newX = random.randRange(480);
+            let newDrop = Drop.new(newX);
+            do drops.append(newDrop);
         }
         var int c;
         let c = 0;

@@ -2,7 +2,7 @@ class Main {
     function void main() {
         var Game game;
         let game = Game.new();
-        var sting loseMessage;
+        var string loseMessage;
         let loseMessage = "YOU ARE NOOBIC!!!";
 
         do game.getBucket.draw();

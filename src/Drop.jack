@@ -4,7 +4,7 @@ class Drop
 
     constructor Drop new(int x)
     {
-        let position = Point.new(x, 0) 
+        let position = Point.new(x, 0);
         return this;
     }
 

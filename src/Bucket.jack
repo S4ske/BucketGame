@@ -8,19 +8,20 @@ class Bucket {
 
     method void draw() {
         do Screen.setColor(true);
-        do Output.drawRectangle(position.getX(), position.getY(), position.getX() + 60, position.getY() + 40)
+        do Output.drawRectangle(position.getX(), position.getY(), position.getX() + 60, position.getY() + 40);
         return;
     }
 
     method void clear() {
         do Screen.setColor(false);
-        do Output.drawRectangle(position.getX(), position.getY(), position.getX() + 60, position.getY() + 40)
+        do Output.drawRectangle(position.getX(), position.getY(), position.getX() + 60, position.getY() + 40);
         return;
     }
 
     method void moveLeft() {
         do clear();
-        var int x = position.getX();
+        var int x;
+        let x = position.getX();
         if (x > 0) {
             if (x > 10) {
                 do position.setX(x - 10);
@@ -30,6 +31,7 @@ class Bucket {
             }
         }
         do draw();
+        return;
     }
 
     method Point getPosition() {
@@ -48,6 +50,7 @@ class Bucket {
             }
         }
         do draw();
+        return;
     }
 
     method void dispose() {
