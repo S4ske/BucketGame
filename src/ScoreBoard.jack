@@ -1,3 +1,56 @@
 class ScoreBoard {
-    // TODO
+    field int score;
+    field int hp;
+    field Point position;
+
+    constructor ScoreBoard new(Point point) {
+        let score = 0;
+        let hp = 3;
+        let position = point;
+        return this;
+    }
+
+    method void decHp() {
+        if (hp > 0) {
+            let hp = hp - 1;
+        }
+        return;
+    }
+
+    method void incScore() {
+        let score = score + 1;
+        return;
+    }
+
+    method int getScore() {
+        return score;
+    }
+
+    method int getHp() {
+        return hp;
+    }
+
+    method void draw() {
+        do Screen.setColor(true);
+        do Output.moveCursor(position.getX(), position.getY());
+        do Output.printInt(score);
+        do Output.printInt(hp);
+        return;
+    }
+
+    method void clear() {
+        do Screen.setColor(false);
+        do Output.moveCursor(position.getX(), position.getY());
+        do Output.printInt(score);
+        do Output.printInt(hp);
+        return;
+    }
+
+    method void dispose() {
+        do score.dispose();
+        do hp.dispose();
+        do position.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
 }

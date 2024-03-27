@@ -28,6 +28,8 @@ class Point {
     }
 
     method void dispose() {
+        do X.dispose();
+        do Y.dispose();
         do Memory.deAlloc(this);
         return;
     }

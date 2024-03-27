@@ -56,6 +56,8 @@ class Random {
     }
 
     method void dispose() {
+        do seed.dispose();
+        do calledTime.dispose();
         do Memory.deAlloc(this);
         return;
     }
