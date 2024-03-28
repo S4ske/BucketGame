@@ -84,7 +84,7 @@ class Game {
         do dropY.dispose();
         do bucketX.dispose();
         do bucketY.dispose();
-        do dropPosition,dispose();
+        do dropPosition.dispose();
         do interval.dispose();
         do bucketPosition.dispose();
         return;
