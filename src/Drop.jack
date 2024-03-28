@@ -14,12 +14,14 @@ class Drop
         var int y;
         
         let y = position.getY();
-        if (y < 251)
-        {
-            do position.setY(y + 5);
-        }
+        do position.setY(y + 1);
 
-        do y.dispose();
+        return;
+    }
+
+    method void toUp(int x) {
+        do position.setX(x);
+        do position.setY(0);
         return;
     }
 
