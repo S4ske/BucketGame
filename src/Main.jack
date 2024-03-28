@@ -48,7 +48,7 @@ class Main {
             do drops.dispose();
             let scoreBoard = game.getScoreBoard();
             if (scoreBoard.getHp() < 1) {
-                do Output.moveCursor(222, 120);
+                do Output.moveCursor(9, 28);
                 do Output.printString(loseMessage);
                 let exit = true;
             }

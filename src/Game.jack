@@ -37,7 +37,7 @@ class Game {
             do drops.append(newDrop);
         }
         let c = 0;
-        while (c < drops.Last()) {
+        while (c < drops.getCount()) {
             let drop = drops.get(c);
             let dropPosition = drop.getPosition();
             if (dropPosition.getY() > 250) {

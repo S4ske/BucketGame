@@ -177,8 +177,8 @@ lt
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-push constant 222
-push constant 120
+push constant 9
+push constant 28
 call Output.moveCursor 2
 pop temp 0
 push local 1

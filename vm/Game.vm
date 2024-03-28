@@ -56,7 +56,7 @@ pop local 2
 label WHILE_EXP0
 push local 2
 push this 1
-call List.Last 1
+call List.getCount 1
 lt
 not
 if-goto WHILE_END0

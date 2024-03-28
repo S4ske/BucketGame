@@ -25,7 +25,7 @@ push this 0
 call Point.getY 1
 push constant 40
 add
-call Output.drawRectangle 4
+call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 return
@@ -47,7 +47,7 @@ push this 0
 call Point.getY 1
 push constant 40
 add
-call Output.drawRectangle 4
+call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 return
