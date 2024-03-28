@@ -16,6 +16,8 @@ class Game {
         let scoreBoard = ScoreBoard.new(scorePosition); 
         let random = Random.new(200);
         let ticks = 200;
+        do bucketPosition.dispose();
+        do scorePosition.dispose();
 
         return this;
     }
@@ -73,6 +75,18 @@ class Game {
             let c = c + 1;
         }
         let ticks = ticks + 1;
+
+        do newX.dispose();
+        do newDrop.dispose();
+        do c.dispose();
+        do drop.dispose();
+        do dropX.dispose();
+        do dropY.dispose();
+        do bucketX.dispose();
+        do bucketY.dispose();
+        do dropPosition,dispose();
+        do interval.dispose();
+        do bucketPosition.dispose();
         return;
     }
 
