@@ -15,7 +15,7 @@ class Game {
         let drops = List.new();
         let scoreBoard = ScoreBoard.new(scorePosition); 
         let random = Random.new(200);
-        let ticks = 200;
+        let ticks = 500;
 
         return this;
     }
@@ -31,7 +31,7 @@ class Game {
         var int interval;
         var Point bucketPosition;
 
-        let interval = 200;
+        let interval = 500;
         if (ticks = interval) {
             let ticks = 0;
             if (interval < 10000) {

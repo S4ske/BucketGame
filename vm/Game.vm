@@ -21,14 +21,14 @@ pop this 2
 push constant 200
 call Random.new 1
 pop this 4
-push constant 200
+push constant 500
 pop this 3
 push pointer 0
 return
 function Game.tick 11
 push argument 0
 pop pointer 0
-push constant 200
+push constant 500
 pop local 9
 push this 3
 push local 9
