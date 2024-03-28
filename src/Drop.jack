@@ -14,15 +14,12 @@ class Drop
         var int y;
         
         let y = position.getY();
-        do position.setY(y + 1);
+        if (y < 251)
+        {
+            do position.setY(y + 5);
+        }
 
-
-        return;
-    }
-
-    method void toUp(int x) {
-        do position.setX(x);
-        do position.setY(0);
+        do y.dispose();
         return;
     }
 
@@ -43,8 +40,10 @@ class Drop
         let y = position.getY();
 
         do Screen.setColor(true);
-        do Screen.drawRectangle(x, y, x + 30, y + 30);
+        do Output.drawRectangle(x, y, x + 30, y + 30);
         
+        do x.dispose();
+        do y.dispose();
         return;
     }
 
@@ -56,8 +55,10 @@ class Drop
         let y = position.getY();
 
         do Screen.setColor(false);
-        do Screen.drawRectangle(x, y, x + 30, y + 30);
+        do Output.drawRectangle(x, y, x + 30, y + 30);
         
+        do x.dispose();
+        do y.dispose();
         return;
     }
 

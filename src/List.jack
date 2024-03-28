@@ -41,6 +41,9 @@ class List {
         let Length = newLength;
         let Data = newData;
 
+        do newData.dispose();
+        do counter.dispose();
+        do newLength.dispose();
         return;
     }
 
@@ -71,6 +74,8 @@ class List {
         do Data.dispose();
         do Memory.deAlloc(this);
         
+        do i.dispose();
+        do point.dispose();
         return;
     }
 }

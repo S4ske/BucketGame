@@ -39,6 +39,8 @@ class Random {
             let ret = ret & getShift();
         }
 
+        do mask.dispose();
+        do ret.dispose();
         return ret;
     }
 
@@ -52,6 +54,7 @@ class Random {
             let temp = temp - 9;
         }
 
+        do temp.dispose();
         return temp;
     }
 

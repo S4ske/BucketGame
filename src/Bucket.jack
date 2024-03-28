@@ -37,6 +37,8 @@ class Bucket {
             }
         }
         do draw();
+        do x.dispose();
+
         return;
     }
 
@@ -57,6 +59,8 @@ class Bucket {
             }
         }
         do draw();
+        do x.dispose();
+        
         return;
     }
 
