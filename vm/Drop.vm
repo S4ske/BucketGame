@@ -14,19 +14,25 @@ pop pointer 0
 push this 0
 call Point.getY 1
 pop local 0
-push local 0
-push constant 251
-lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
 push this 0
 push local 0
-push constant 5
+push constant 1
 add
 call Point.setY 2
 pop temp 0
-label IF_FALSE0
+push constant 0
+return
+function Drop.toUp 0
+push argument 0
+pop pointer 0
+push this 0
+push argument 1
+call Point.setX 2
+pop temp 0
+push this 0
+push constant 0
+call Point.setY 2
+pop temp 0
 push constant 0
 return
 function Drop.getPosition 0
@@ -64,7 +70,7 @@ add
 push local 1
 push constant 30
 add
-call Output.drawRectangle 4
+call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 return
@@ -88,7 +94,7 @@ add
 push local 1
 push constant 30
 add
-call Output.drawRectangle 4
+call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 return

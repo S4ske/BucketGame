@@ -10,12 +10,12 @@ class Game {
         var Point bucketPosition;
         var Point scorePosition;
         let bucketPosition = Point.new(222, 210);
-        let scorePosition = Point.new(222, 10);
+        let scorePosition = Point.new(23, 0);
         let bucket = Bucket.new(bucketPosition);
         let drops = List.new();
         let scoreBoard = ScoreBoard.new(scorePosition); 
         let random = Random.new(200);
-        let ticks = 100;
+        let ticks = 200;
 
         return this;
     }
@@ -28,10 +28,20 @@ class Game {
         var Drop drop;
         var int dropX, dropY, bucketX, bucketY;
         var Point dropPosition;
+        var int interval;
         var Point bucketPosition;
-        do Sys.wait(25);
-        if (ticks = 100) {
+
+        let interval = 200;
+        if (ticks = interval) {
             let ticks = 0;
+            if (interval < 10000) {
+                let interval = interval * 3;
+            }
+            else {
+                if (interval < 15000) {
+                    let interval = interval * 2;
+                }
+            }
             let newX = random.randRange(480);
             let newDrop = Drop.new(newX);
             do drops.append(newDrop);
@@ -40,9 +50,9 @@ class Game {
         while (c < drops.getCount()) {
             let drop = drops.get(c);
             let dropPosition = drop.getPosition();
-            if (dropPosition.getY() > 250) {
+            if (dropPosition.getY() > 224) {
                 let newX = random.randRange(480);
-                do drop.setPosition(newX);
+                do drop.toUp(newX);
                 do scoreBoard.decHp();
             }
             else {
@@ -53,7 +63,7 @@ class Game {
                 let bucketY = bucketPosition.getY();
                 if ((dropX > bucketX) & ((dropX + 30) < (bucketX + 60)) & (dropY < bucketY) & ((dropY + 30) > bucketY)) {
                     let newX = random.randRange(480);
-                    do drop.setPosition(newX);
+                    do drop.toUp(newX);
                     do scoreBoard.incScore();
                 }
                 else {

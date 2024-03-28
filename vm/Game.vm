@@ -6,8 +6,8 @@ push constant 222
 push constant 210
 call Point.new 2
 pop local 0
-push constant 222
-push constant 10
+push constant 23
+push constant 0
 call Point.new 2
 pop local 1
 push local 0
@@ -21,24 +21,47 @@ pop this 2
 push constant 200
 call Random.new 1
 pop this 4
-push constant 100
+push constant 200
 pop this 3
 push pointer 0
 return
-function Game.tick 10
+function Game.tick 11
 push argument 0
 pop pointer 0
-push constant 25
-call Sys.wait 1
-pop temp 0
+push constant 200
+pop local 9
 push this 3
-push constant 100
+push local 9
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push constant 0
 pop this 3
+push local 9
+push constant 10000
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 9
+push constant 3
+call Math.multiply 2
+pop local 9
+goto IF_END1
+label IF_FALSE1
+push local 9
+push constant 15000
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 9
+push constant 2
+call Math.multiply 2
+pop local 9
+label IF_FALSE2
+label IF_END1
 push this 4
 push constant 480
 call Random.randRange 2
@@ -69,37 +92,37 @@ call Drop.getPosition 1
 pop local 8
 push local 8
 call Point.getY 1
-push constant 250
+push constant 224
 gt
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
 push this 4
 push constant 480
 call Random.randRange 2
 pop local 0
 push local 3
 push local 0
-call Drop.setPosition 2
+call Drop.toUp 2
 pop temp 0
 push this 2
 call ScoreBoard.decHp 1
 pop temp 0
-goto IF_END1
-label IF_FALSE1
+goto IF_END3
+label IF_FALSE3
 push this 0
 call Bucket.getPosition 1
-pop local 9
+pop local 10
 push local 8
 call Point.getX 1
 pop local 4
 push local 8
 call Point.getY 1
 pop local 5
-push local 9
+push local 10
 call Point.getX 1
 pop local 6
-push local 9
+push local 10
 call Point.getY 1
 pop local 7
 push local 4
@@ -123,27 +146,27 @@ add
 push local 7
 gt
 and
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
 push this 4
 push constant 480
 call Random.randRange 2
 pop local 0
 push local 3
 push local 0
-call Drop.setPosition 2
+call Drop.toUp 2
 pop temp 0
 push this 2
 call ScoreBoard.incScore 1
 pop temp 0
-goto IF_END2
-label IF_FALSE2
+goto IF_END4
+label IF_FALSE4
 push local 3
 call Drop.update 1
 pop temp 0
-label IF_END2
-label IF_END1
+label IF_END4
+label IF_END3
 push local 2
 push constant 1
 add

@@ -74,6 +74,12 @@ push local 2
 not
 not
 if-goto WHILE_END1
+push local 6
+call Bucket.clear 1
+pop temp 0
+push local 6
+call Bucket.draw 1
+pop temp 0
 call Keyboard.keyPressed 0
 push constant 65
 eq
@@ -129,11 +135,12 @@ pop local 5
 push local 5
 call Drop.clear 1
 pop temp 0
+push local 3
+push constant 1
+add
+pop local 3
 goto WHILE_EXP2
 label WHILE_END2
-push local 4
-call List.dispose 1
-pop temp 0
 push local 0
 call Game.tick 1
 pop temp 0
@@ -162,14 +169,18 @@ pop local 5
 push local 5
 call Drop.draw 1
 pop temp 0
+push local 3
+push constant 1
+add
+pop local 3
 goto WHILE_EXP3
 label WHILE_END3
-push local 4
-call List.dispose 1
-pop temp 0
 push local 0
 call Game.getScoreBoard 1
 pop local 7
+push constant 20
+call Sys.wait 1
+pop temp 0
 push local 7
 call ScoreBoard.getHp 1
 push constant 1
@@ -178,7 +189,7 @@ if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
 push constant 9
-push constant 28
+push constant 24
 call Output.moveCursor 2
 pop temp 0
 push local 1

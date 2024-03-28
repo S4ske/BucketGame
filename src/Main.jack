@@ -18,6 +18,8 @@ class Main {
         while(~((Keyboard.keyPressed() = 65) | (Keyboard.keyPressed() = 68) | (Keyboard.keyPressed() = 81))){ }
         let exit = false;
         while (~exit) {
+            do bucket.clear();
+            do bucket.draw();
             if (Keyboard.keyPressed() = 65) {
                 do game.moveBucketLeft();
             }
@@ -34,8 +36,8 @@ class Main {
             while (i < drops.getCount()) {
                 let drop = drops.get(i);
                 do drop.clear();
+                let i = i + 1;
             }
-            do drops.dispose();
             do game.tick();
             let scoreBoard = game.getScoreBoard();
             do scoreBoard.draw();
@@ -44,11 +46,12 @@ class Main {
             while (i < drops.getCount()) {
                 let drop = drops.get(i);
                 do drop.draw();
+                let i = i + 1;
             }
-            do drops.dispose();
             let scoreBoard = game.getScoreBoard();
+            do Sys.wait(20);
             if (scoreBoard.getHp() < 1) {
-                do Output.moveCursor(9, 28);
+                do Output.moveCursor(9, 24);
                 do Output.printString(loseMessage);
                 let exit = true;
             }

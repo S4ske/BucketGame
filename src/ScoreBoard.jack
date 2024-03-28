@@ -32,15 +32,17 @@ class ScoreBoard {
 
     method void draw() {
         do Screen.setColor(true);
-        do Output.moveCursor(position.getY() / 12, position.getX() / 12);
+        do Output.moveCursor(position.getY(), position.getX());
+        do Output.printString("SCORE: ");
         do Output.printInt(score);
+        do Output.printString("  HP: ");
         do Output.printInt(hp);
         return;
     }
 
     method void clear() {
         do Screen.setColor(false);
-        do Output.moveCursor(position.getY() / 12, position.getX() / 12);
+        do Output.moveCursor(position.getY(), position.getX());
         do Output.printInt(score);
         do Output.printInt(hp);
         return;
