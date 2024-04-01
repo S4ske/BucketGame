@@ -31,12 +31,17 @@ class ScoreBoard {
     }
 
     method void draw() {
+        var string line1, line2;
+        let line1 = "SCORE: ";
+        let line2 = "  HP: ";
         do Screen.setColor(true);
         do Output.moveCursor(position.getY(), position.getX());
-        do Output.printString("SCORE: ");
+        do Output.printString(line1);
         do Output.printInt(score);
-        do Output.printString("  HP: ");
+        do Output.printString(line2);
         do Output.printInt(hp);
+        do Memory.deAlloc(line1);
+        do Memory.deAlloc(line2);
         return;
     }
 

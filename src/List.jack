@@ -49,6 +49,9 @@ class List {
     }
 
     method void set(int index, Point point) {
+        var Point oldPoint;
+        let oldPoint = Data[index];
+        do oldPoint.dispose();
         let Data[index] = point;
         return;
     }    

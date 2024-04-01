@@ -6,45 +6,49 @@ push argument 0
 pop this 0
 push pointer 0
 return
-function Bucket.draw 0
+function Bucket.draw 2
 push argument 0
 pop pointer 0
+push this 0
+call Point.getX 1
+pop local 0
+push this 0
+call Point.getY 1
+pop local 1
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-push this 0
-call Point.getX 1
-push this 0
-call Point.getY 1
-push this 0
-call Point.getX 1
+push local 0
+push local 1
+push local 0
 push constant 60
 add
-push this 0
-call Point.getY 1
+push local 1
 push constant 40
 add
 call Screen.drawRectangle 4
 pop temp 0
 push constant 0
 return
-function Bucket.clear 0
+function Bucket.clear 2
 push argument 0
 pop pointer 0
+push this 0
+call Point.getX 1
+pop local 0
+push this 0
+call Point.getY 1
+pop local 1
 push constant 0
 call Screen.setColor 1
 pop temp 0
-push this 0
-call Point.getX 1
-push this 0
-call Point.getY 1
-push this 0
-call Point.getX 1
+push local 0
+push local 1
+push local 0
 push constant 60
 add
-push this 0
-call Point.getY 1
+push local 1
 push constant 40
 add
 call Screen.drawRectangle 4

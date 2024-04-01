@@ -45,19 +45,9 @@ push argument 0
 pop pointer 0
 push this 1
 return
-function ScoreBoard.draw 0
+function ScoreBoard.draw 2
 push argument 0
 pop pointer 0
-push constant 0
-not
-call Screen.setColor 1
-pop temp 0
-push this 2
-call Point.getY 1
-push this 2
-call Point.getX 1
-call Output.moveCursor 2
-pop temp 0
 push constant 7
 call String.new 1
 push constant 83
@@ -74,11 +64,7 @@ push constant 58
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
-call Output.printString 1
-pop temp 0
-push this 0
-call Output.printInt 1
-pop temp 0
+pop local 0
 push constant 6
 call String.new 1
 push constant 32
@@ -93,10 +79,34 @@ push constant 58
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
+pop local 1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 2
+call Point.getY 1
+push this 2
+call Point.getX 1
+call Output.moveCursor 2
+pop temp 0
+push local 0
+call Output.printString 1
+pop temp 0
+push this 0
+call Output.printInt 1
+pop temp 0
+push local 1
 call Output.printString 1
 pop temp 0
 push this 1
 call Output.printInt 1
+pop temp 0
+push local 0
+call Memory.deAlloc 1
+pop temp 0
+push local 1
+call Memory.deAlloc 1
 pop temp 0
 push constant 0
 return

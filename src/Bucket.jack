@@ -7,14 +7,20 @@ class Bucket {
     }
 
     method void draw() {
+        var int x, y;
+        let x = position.getX();
+        let y = position.getY();
         do Screen.setColor(true);
-        do Screen.drawRectangle(position.getX(), position.getY(), position.getX() + 60, position.getY() + 40);
+        do Screen.drawRectangle(x, y, x + 60, y + 40);
         return;
     }
 
     method void clear() {
+        var int x, y;
+        let x = position.getX();
+        let y = position.getY();
         do Screen.setColor(false);
-        do Screen.drawRectangle(position.getX(), position.getY(), position.getX() + 60, position.getY() + 40);
+        do Screen.drawRectangle(x, y, x + 60, y + 40);
         return;
     }
 
